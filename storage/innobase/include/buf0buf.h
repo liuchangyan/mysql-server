@@ -1613,6 +1613,8 @@ class buf_page_t {
    the truncation number. */
   uint32_t m_version{};
 
+  /** Pading to solve false sharing problem */
+  char pading[16];
   /** Time of first access, or 0 if the block was never accessed in the
   buffer pool. Protected by block mutex */
   std::chrono::steady_clock::time_point access_time;
